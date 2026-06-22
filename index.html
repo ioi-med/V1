@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="V1 - Système d'Intelligence Artificielle avancé inspiré de JARVIS">
+    <title>V1 - Intelligence Artificielle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== LOGIN SCREEN ==================== -->
+    <div id="login-screen">
+        <div class="circuit-lines"></div>
+        <div class="circuit-lines circuit-lines-2"></div>
+        <div id="boot-sequence">
+            <div class="scan-line"></div>
+        </div>
+        <div class="login-content">
+            <div class="login-logo">
+                <div class="logo-ring logo-ring-1"></div>
+                <div class="logo-ring logo-ring-2"></div>
+                <h1 class="logo-text">V1</h1>
+            </div>
+            <p class="login-subtitle">SYSTÈME D'INTELLIGENCE ARTIFICIELLE</p>
+            <div class="login-form">
+                <div class="input-wrapper">
+                    <input type="password" id="password-input" placeholder="Entrez le mot de passe..." autocomplete="off" aria-label="Mot de passe">
+                    <div class="input-glow"></div>
+                </div>
+                <button id="login-btn" aria-label="Se connecter">
+                    <span>AUTHENTIFICATION</span>
+                    <span class="btn-arrow">▸</span>
+                </button>
+                <div id="login-error" class="hidden" role="alert"></div>
+            </div>
+            <div class="login-footer">
+                <span class="blink">●</span> SYSTÈME SÉCURISÉ — ACCÈS RESTREINT
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN APPLICATION ==================== -->
+    <div id="main-app" class="hidden">
+
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <div class="top-bar-logo">
+                    <span class="logo-icon">◈</span>
+                    <span class="logo-name">V1</span>
+                </div>
+            </div>
+            <div class="top-bar-center">
+                <div class="jarvis-orb-wrapper">
+                    <div class="jarvis-orb">
+                        <div class="orb-ring orb-ring-1"></div>
+                        <div class="orb-ring orb-ring-2"></div>
+                        <div class="orb-ring orb-ring-3"></div>
+                        <div class="orb-core"></div>
+                    </div>
+                    <div id="status-indicator" class="status-indicator">
+                        <span class="pulse-dot"></span>
+                        <span class="status-text">EN LIGNE</span>
+                    </div>
+                </div>
+            </div>
+            <div class="top-bar-right">
+                <button id="mode-toggle" class="top-btn" aria-label="Changer le mode">
+                    <span class="mode-icon">◉</span>
+                    <span class="mode-label">LOCAL</span>
+                </button>
+                <button id="settings-btn" class="top-btn" aria-label="Paramètres">
+                    <span>⚙</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Left Sidebar -->
+            <aside class="sidebar" aria-label="Actions rapides et informations">
+                <div class="sidebar-section">
+                    <h2 class="sidebar-title">Actions Rapides</h2>
+                    <button id="quick-wiki" class="sidebar-btn">
+                        <span class="sidebar-btn-icon">📖</span>
+                        <span>Recherche Wikipedia</span>
+                    </button>
+                    <button id="quick-link" class="sidebar-btn">
+                        <span class="sidebar-btn-icon">🔗</span>
+                        <span>Ouvrir un lien</span>
+                    </button>
+                    <button id="quick-time" class="sidebar-btn">
+                        <span class="sidebar-btn-icon">🕐</span>
+                        <span>Heure & Date</span>
+                    </button>
+                    <button id="quick-calc" class="sidebar-btn">
+                        <span class="sidebar-btn-icon">🧮</span>
+                        <span>Calculatrice</span>
+                    </button>
+                    <button id="quick-news" class="sidebar-btn">
+                        <span class="sidebar-btn-icon">📰</span>
+                        <span>Actualités</span>
+                    </button>
+                    <button id="quick-help" class="sidebar-btn">
+                        <span class="sidebar-btn-icon">❓</span>
+                        <span>Aide</span>
+                    </button>
+                </div>
+                <div class="sidebar-section">
+                    <h2 class="sidebar-title">Système</h2>
+                    <div class="sys-info-item">
+                        <span class="sys-label">Mode</span>
+                        <span id="current-mode-display" class="sys-value">LOCAL</span>
+                    </div>
+                    <div class="sys-info-item">
+                        <span class="sys-label">Requêtes</span>
+                        <span id="request-count" class="sys-value">0</span>
+                    </div>
+                    <div class="sys-info-item">
+                        <span class="sys-label">Uptime</span>
+                        <span id="uptime-display" class="sys-value">00:00:00</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Chat Area -->
+            <section class="chat-area">
+                <!-- Arc Reactor -->
+                <div id="arc-reactor">
+                    <div class="ring ring-1"></div>
+                    <div class="ring ring-2"></div>
+                    <div class="ring ring-3"></div>
+                    <div class="ring ring-4"></div>
+                    <div class="core">
+                        <div class="core-inner"></div>
+                    </div>
+                    <div class="hex hex-1">⬡</div>
+                    <div class="hex hex-2">⬡</div>
+                    <div class="hex hex-3">⬡</div>
+                    <div class="hex hex-4">⬡</div>
+                </div>
+
+                <!-- Chat Messages -->
+                <div id="chat-messages" aria-live="polite" aria-label="Messages"></div>
+
+                <!-- Input Area -->
+                <div class="input-area">
+                    <input type="text" id="user-input" placeholder="Parlez à V1..." autocomplete="off" aria-label="Votre message">
+                    <button id="send-btn" aria-label="Envoyer le message">➤</button>
+                    <button id="voice-btn" aria-label="Commande vocale">🎤</button>
+                </div>
+            </section>
+
+            <!-- Right Sidebar -->
+            <aside class="sidebar-right" aria-label="Journal d'activité">
+                <div class="sidebar-section">
+                    <h2 class="sidebar-title">Journal d'Activité</h2>
+                    <div id="activity-log">
+                        <div class="log-empty">Aucune activité enregistrée</div>
+                    </div>
+                </div>
+                <div class="sidebar-section">
+                    <h2 class="sidebar-title">Capacités</h2>
+                    <ul class="capabilities-list">
+                        <li><span class="cap-icon">🔍</span> Recherche Wikipedia</li>
+                        <li><span class="cap-icon">🌐</span> Ouverture de liens</li>
+                        <li><span class="cap-icon">🧮</span> Calculs mathématiques</li>
+                        <li><span class="cap-icon">🤖</span> IA conversationnelle</li>
+                        <li><span class="cap-icon">🎤</span> Commandes vocales</li>
+                        <li><span class="cap-icon">📰</span> Actualités & infos</li>
+                        <li><span class="cap-icon">⏰</span> Heure & date</li>
+                        <li><span class="cap-icon">🔑</span> Multi-API (GPT, Claude…)</li>
+                    </ul>
+                </div>
+            </aside>
+
+        </main>
+    </div>
+
+    <!-- ==================== SETTINGS MODAL ==================== -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">CONFIGURATION V1</h2>
+                <button id="close-settings" class="modal-close" aria-label="Fermer">✕</button>
+            </div>
+            <div class="modal-body">
+                <!-- API Configuration -->
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Fournisseur d'IA</h3>
+                    <label class="settings-label" for="api-provider">Fournisseur API</label>
+                    <select id="api-provider" class="settings-input">
+                        <option value="openai">OpenAI (GPT)</option>
+                        <option value="anthropic">Anthropic (Claude)</option>
+                        <option value="google">Google (Gemini)</option>
+                        <option value="groq">Groq (LLaMA)</option>
+                        <option value="mistral">Mistral AI</option>
+                    </select>
+
+                    <label class="settings-label" for="api-key-input">Clé API</label>
+                    <input type="password" id="api-key-input" class="settings-input" placeholder="Entrez votre clé API..." autocomplete="off">
+
+                    <label class="settings-label" for="api-model-input">Modèle (optionnel)</label>
+                    <input type="text" id="api-model-input" class="settings-input" placeholder="Ex: gpt-4, claude-3-opus...">
+
+                    <button id="save-api-btn" class="settings-btn-primary">SAUVEGARDER</button>
+                    <div id="api-status" class="api-status"></div>
+                </div>
+
+                <!-- Voice Settings -->
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Voix & Audio</h3>
+                    <div class="toggle-row">
+                        <span class="toggle-label">Synthèse vocale</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="voice-toggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Danger Zone -->
+                <div class="settings-section danger-zone">
+                    <h3 class="settings-section-title">Zone Danger</h3>
+                    <button id="clear-chat-btn" class="settings-btn-danger">
+                        <span>🗑️</span> Effacer la conversation
+                    </button>
+                    <button id="logout-btn" class="settings-btn-danger">
+                        <span>🚪</span> Déconnexion
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== NOTIFICATIONS ==================== -->
+    <div id="notification-container" aria-live="assertive"></div>
+
+    <script src="app.js" defer></script>
+</body>
+</html>
