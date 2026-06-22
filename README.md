@@ -5,7 +5,7 @@ Bienvenue dans la documentation complète des capacités de **V1**, votre assist
 ---
 
 ## 🔒 Authentification & Sécurité
-- **Connexion sécurisée** : Le système est protégé par un mot de passe haché en SHA-256 (`JKLMehdi04`). Le mot de passe en clair n'est jamais stocké dans le code.
+- **Connexion sécurisée** : Le système est protégé par un mot de passe haché en SHA-256. Le mot de passe en clair n'est jamais stocké dans le code ni dans ce document.
 
 ## 🌐 Deux Modes de Fonctionnement
 
