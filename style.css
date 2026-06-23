@@ -1362,3 +1362,466 @@ select.settings-input option {
     border-radius: var(--radius-md);
     backdrop-filter: blur(12px);
 }
+
+/* =========================================
+   EMOTION SYSTEM UI
+   ========================================= */
+.emotion-display {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.emotion-mood-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: rgba(13, 20, 33, 0.5);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    transition: all 0.5s ease;
+}
+
+.emotion-emoji {
+    font-size: 1.5rem;
+    transition: all 0.5s ease;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
+}
+
+.emotion-mood-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.5s ease;
+}
+
+.emotion-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.emotion-bar-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    min-width: 58px;
+    text-transform: uppercase;
+}
+
+.emotion-bar-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(30, 40, 60, 0.6);
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 71, 87, 0.1);
+}
+
+.energy-track {
+    border-color: rgba(46, 213, 115, 0.1);
+}
+
+.emotion-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--success), var(--warning), var(--danger));
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 6px rgba(255, 71, 87, 0.3);
+}
+
+.energy-fill {
+    background: linear-gradient(90deg, var(--danger), var(--warning), var(--success));
+    box-shadow: 0 0 6px rgba(46, 213, 115, 0.3);
+}
+
+.emotion-bar-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    min-width: 28px;
+    text-align: right;
+}
+
+/* =========================================
+   MOOD-BASED BODY THEMING
+   ========================================= */
+
+/* Happy */
+body.mood-happy .orb-core,
+body.mood-happy .core-inner {
+    background: var(--success);
+    box-shadow: 0 0 10px rgba(46, 213, 115, 0.6);
+}
+body.mood-happy .status-indicator {
+    background: rgba(46, 213, 115, 0.08);
+    border-color: rgba(46, 213, 115, 0.2);
+}
+body.mood-happy .pulse-dot {
+    background: var(--success);
+    box-shadow: 0 0 8px rgba(46, 213, 115, 0.5);
+}
+body.mood-happy .status-text { color: var(--success); }
+
+/* Excited */
+body.mood-excited .orb-core,
+body.mood-excited .core-inner {
+    background: #a855f7;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.7);
+}
+body.mood-excited .status-indicator {
+    background: rgba(168, 85, 247, 0.08);
+    border-color: rgba(168, 85, 247, 0.3);
+}
+body.mood-excited .pulse-dot {
+    background: #a855f7;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+    animation: pulse 0.8s ease-in-out infinite;
+}
+body.mood-excited .status-text { color: #a855f7; }
+
+/* Annoyed */
+body.mood-annoyed .orb-core,
+body.mood-annoyed .core-inner {
+    background: var(--warning);
+    box-shadow: 0 0 12px rgba(255, 165, 2, 0.6);
+}
+body.mood-annoyed .status-indicator {
+    background: rgba(255, 165, 2, 0.08);
+    border-color: rgba(255, 165, 2, 0.3);
+}
+body.mood-annoyed .pulse-dot {
+    background: var(--warning);
+    box-shadow: 0 0 8px rgba(255, 165, 2, 0.5);
+}
+body.mood-annoyed .status-text { color: var(--warning); }
+body.mood-annoyed .core {
+    animation: corePulse 1.5s ease-in-out infinite;
+}
+
+/* Sarcastic */
+body.mood-sarcastic .orb-core,
+body.mood-sarcastic .core-inner {
+    background: #f59e0b;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
+}
+body.mood-sarcastic .status-indicator {
+    background: rgba(245, 158, 11, 0.08);
+    border-color: rgba(245, 158, 11, 0.25);
+}
+body.mood-sarcastic .pulse-dot {
+    background: #f59e0b;
+}
+body.mood-sarcastic .status-text { color: #f59e0b; }
+
+/* Angry */
+body.mood-angry .orb-core,
+body.mood-angry .core-inner {
+    background: var(--danger);
+    box-shadow: 0 0 20px rgba(255, 71, 87, 0.8);
+}
+body.mood-angry .status-indicator {
+    background: rgba(255, 71, 87, 0.1);
+    border-color: rgba(255, 71, 87, 0.4);
+    animation: angryShake 0.5s ease infinite;
+}
+body.mood-angry .pulse-dot {
+    background: var(--danger);
+    box-shadow: 0 0 12px rgba(255, 71, 87, 0.7);
+    animation: pulse 0.5s ease-in-out infinite;
+}
+body.mood-angry .status-text { color: var(--danger); }
+body.mood-angry .core {
+    animation: angryPulse 0.8s ease-in-out infinite;
+}
+body.mood-angry .ring-1,
+body.mood-angry .ring-2,
+body.mood-angry .ring-3,
+body.mood-angry .ring-4 {
+    border-color: rgba(255, 71, 87, 0.15);
+}
+body.mood-angry .ring-3::before {
+    background: var(--danger);
+    box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+}
+body.mood-angry .message.ai {
+    border-left-color: rgba(255, 71, 87, 0.35);
+}
+
+/* Tired */
+body.mood-tired .orb-core,
+body.mood-tired .core-inner {
+    background: var(--text-dim);
+    box-shadow: 0 0 5px rgba(74, 85, 104, 0.4);
+}
+body.mood-tired .status-indicator {
+    background: rgba(74, 85, 104, 0.08);
+    border-color: rgba(74, 85, 104, 0.2);
+}
+body.mood-tired .pulse-dot {
+    background: var(--text-dim);
+    animation: pulse 4s ease-in-out infinite;
+}
+body.mood-tired .status-text { color: var(--text-dim); }
+body.mood-tired .core {
+    animation: corePulse 6s ease-in-out infinite;
+}
+
+/* =========================================
+   VOICE MODE OVERLAY
+   ========================================= */
+.voice-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 8000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(6, 10, 18, 0.92);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    animation: fadeIn 0.4s ease;
+}
+
+.voice-overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    animation: bootUp 0.6s ease-out;
+}
+
+/* Voice Orb */
+.voice-orb-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.voice-orb {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.voice-orb-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid transparent;
+}
+
+.voice-orb-ring-1 {
+    width: 120px;
+    height: 120px;
+    border-color: rgba(0, 212, 255, 0.3);
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    animation: rotate 3s linear infinite;
+}
+
+.voice-orb-ring-2 {
+    width: 90px;
+    height: 90px;
+    border-color: rgba(0, 212, 255, 0.5);
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation: rotate 2s linear infinite reverse;
+}
+
+.voice-orb-ring-3 {
+    width: 60px;
+    height: 60px;
+    border-color: rgba(0, 212, 255, 0.7);
+    border-top-color: transparent;
+    animation: rotate 1.5s linear infinite;
+}
+
+.voice-orb-core {
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, var(--primary) 0%, rgba(0, 212, 255, 0.4) 60%, transparent 80%);
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 60px rgba(0, 212, 255, 0.2);
+    animation: voiceCorePulse 2s ease-in-out infinite;
+}
+
+/* Voice Waves */
+.voice-waves {
+    position: absolute;
+    bottom: -10px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    height: 40px;
+}
+
+.voice-wave {
+    width: 4px;
+    background: linear-gradient(to top, var(--primary), rgba(0, 212, 255, 0.3));
+    border-radius: 2px;
+    animation: voiceWave 1.2s ease-in-out infinite;
+}
+.voice-wave:nth-child(1) { height: 12px; animation-delay: 0s; }
+.voice-wave:nth-child(2) { height: 20px; animation-delay: 0.15s; }
+.voice-wave:nth-child(3) { height: 28px; animation-delay: 0.3s; }
+.voice-wave:nth-child(4) { height: 20px; animation-delay: 0.45s; }
+.voice-wave:nth-child(5) { height: 12px; animation-delay: 0.6s; }
+
+/* Voice listening state */
+.voice-overlay.listening .voice-wave {
+    animation: voiceWaveActive 0.6s ease-in-out infinite;
+}
+.voice-overlay.listening .voice-orb-core {
+    animation: voiceCorePulse 1s ease-in-out infinite;
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.7), 0 0 80px rgba(0, 212, 255, 0.3);
+}
+
+/* Voice speaking state */
+.voice-overlay.speaking .voice-orb-ring-1 {
+    border-color: rgba(168, 85, 247, 0.4);
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+}
+.voice-overlay.speaking .voice-orb-ring-2 {
+    border-color: rgba(168, 85, 247, 0.6);
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+.voice-overlay.speaking .voice-orb-core {
+    background: radial-gradient(circle, #a855f7 0%, rgba(168, 85, 247, 0.4) 60%, transparent 80%);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.5), 0 0 60px rgba(168, 85, 247, 0.2);
+    animation: voiceCorePulse 0.8s ease-in-out infinite;
+}
+.voice-overlay.speaking .voice-wave {
+    background: linear-gradient(to top, #a855f7, rgba(168, 85, 247, 0.3));
+    animation: voiceWaveSpeaking 0.4s ease-in-out infinite;
+}
+
+/* Voice processing state */
+.voice-overlay.processing .voice-orb-ring-1,
+.voice-overlay.processing .voice-orb-ring-2,
+.voice-overlay.processing .voice-orb-ring-3 {
+    animation-duration: 0.8s;
+}
+.voice-overlay.processing .voice-orb-core {
+    background: radial-gradient(circle, var(--warning) 0%, rgba(255, 165, 2, 0.4) 60%, transparent 80%);
+    box-shadow: 0 0 30px rgba(255, 165, 2, 0.5);
+}
+.voice-overlay.processing .voice-wave {
+    background: linear-gradient(to top, var(--warning), rgba(255, 165, 2, 0.3));
+    animation: voiceWaveProcessing 0.3s ease-in-out infinite;
+}
+
+.voice-status-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.3em;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    text-align: center;
+}
+
+.voice-sub-status {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+    animation: blink 2s ease-in-out infinite;
+}
+
+.voice-close-btn {
+    padding: 12px 30px;
+    background: transparent;
+    border: 1px solid rgba(255, 71, 87, 0.3);
+    border-radius: var(--radius-xl);
+    color: var(--danger);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all var(--transition);
+    margin-top: 20px;
+}
+.voice-close-btn:hover {
+    background: rgba(255, 71, 87, 0.1);
+    border-color: rgba(255, 71, 87, 0.6);
+    box-shadow: 0 0 20px rgba(255, 71, 87, 0.15);
+}
+
+/* Voice mode active indicator on voice button */
+#voice-btn.voice-mode-active {
+    border-color: var(--success);
+    color: var(--success);
+    animation: voiceBtnPulse 2s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(46, 213, 115, 0.3);
+    background: rgba(46, 213, 115, 0.1);
+}
+
+/* =========================================
+   VOICE & EMOTION ANIMATIONS
+   ========================================= */
+@keyframes voiceCorePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+@keyframes voiceWave {
+    0%, 100% { transform: scaleY(0.5); opacity: 0.5; }
+    50% { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes voiceWaveActive {
+    0%, 100% { transform: scaleY(0.3); }
+    25% { transform: scaleY(1.5); }
+    50% { transform: scaleY(0.6); }
+    75% { transform: scaleY(1.2); }
+}
+
+@keyframes voiceWaveSpeaking {
+    0%, 100% { transform: scaleY(0.4); }
+    50% { transform: scaleY(1.8); }
+}
+
+@keyframes voiceWaveProcessing {
+    0%, 100% { transform: scaleY(0.2); opacity: 0.3; }
+    50% { transform: scaleY(0.8); opacity: 0.8; }
+}
+
+@keyframes voiceBtnPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(46, 213, 115, 0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(46, 213, 115, 0); }
+}
+
+@keyframes angryShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+}
+
+@keyframes angryPulse {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 20px rgba(255, 71, 87, 0.4), 0 0 40px rgba(255, 71, 87, 0.2);
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.15);
+        box-shadow: 0 0 30px rgba(255, 71, 87, 0.6), 0 0 60px rgba(255, 71, 87, 0.3);
+    }
+}

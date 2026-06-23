@@ -111,6 +111,30 @@
                         <span>Aide</span>
                     </button>
                 </div>
+                <!-- Emotion Indicator -->
+                <div class="sidebar-section">
+                    <h2 class="sidebar-title">État Émotionnel</h2>
+                    <div class="emotion-display">
+                        <div class="emotion-mood-row">
+                            <span id="emotion-emoji" class="emotion-emoji">😊</span>
+                            <span id="emotion-mood-text" class="emotion-mood-text">Neutre</span>
+                        </div>
+                        <div class="emotion-bar-wrapper">
+                            <span class="emotion-bar-label">Irritation</span>
+                            <div class="emotion-bar-track">
+                                <div id="emotion-bar-fill" class="emotion-bar-fill" style="width: 0%"></div>
+                            </div>
+                            <span id="emotion-bar-value" class="emotion-bar-value">0%</span>
+                        </div>
+                        <div class="emotion-bar-wrapper">
+                            <span class="emotion-bar-label">Énergie</span>
+                            <div class="emotion-bar-track energy-track">
+                                <div id="energy-bar-fill" class="emotion-bar-fill energy-fill" style="width: 100%"></div>
+                            </div>
+                            <span id="energy-bar-value" class="emotion-bar-value">100%</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="sidebar-section">
                     <h2 class="sidebar-title">Système</h2>
                     <div class="sys-info-item">
@@ -152,7 +176,7 @@
                 <div class="input-area">
                     <input type="text" id="user-input" placeholder="Parlez à V1..." autocomplete="off" aria-label="Votre message">
                     <button id="send-btn" aria-label="Envoyer le message">➤</button>
-                    <button id="voice-btn" aria-label="Commande vocale">🎤</button>
+                    <button id="voice-btn" aria-label="Mode vocal" title="Activer le mode vocal continu">🎤</button>
                 </div>
             </section>
 
@@ -236,6 +260,30 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- ==================== VOICE MODE OVERLAY ==================== -->
+    <div id="voice-mode-overlay" class="voice-overlay hidden">
+        <div class="voice-overlay-content">
+            <div class="voice-orb-container">
+                <div class="voice-orb">
+                    <div class="voice-orb-ring voice-orb-ring-1"></div>
+                    <div class="voice-orb-ring voice-orb-ring-2"></div>
+                    <div class="voice-orb-ring voice-orb-ring-3"></div>
+                    <div class="voice-orb-core"></div>
+                </div>
+                <div class="voice-waves">
+                    <span class="voice-wave"></span>
+                    <span class="voice-wave"></span>
+                    <span class="voice-wave"></span>
+                    <span class="voice-wave"></span>
+                    <span class="voice-wave"></span>
+                </div>
+            </div>
+            <div id="voice-status-text" class="voice-status-text">MODE VOCAL ACTIF</div>
+            <div id="voice-sub-status" class="voice-sub-status">Écoute en cours...</div>
+            <button id="voice-mode-close" class="voice-close-btn" aria-label="Fermer le mode vocal">DÉSACTIVER LE MODE VOCAL</button>
         </div>
     </div>
 
